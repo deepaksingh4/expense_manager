@@ -1,18 +1,17 @@
-import 'package:expense_manager/Screens/Login/login.dart';
+import 'package:expense_manager/Features/MainView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ExpenseManager());
+  runApp(const ExpenseManager());
 }
 
-class ExpenseManager extends StatelessWidget{
-  @override
+class ExpenseManager extends StatelessWidget {
+  const ExpenseManager({super.key});
 
-  Widget build(BuildContext context){
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-           body: Login()
-      )
-    );
+        home: SafeArea(
+            child: MainView()));
   }
 }
