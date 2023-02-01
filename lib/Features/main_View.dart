@@ -1,7 +1,7 @@
-import 'package:expense_manager/Core/AppColors.dart';
-import 'package:expense_manager/Features/Dashboard/Presentation/Views/Dashboard.dart';
-import 'package:expense_manager/Features/Profile/ProfileView.dart';
-import 'package:expense_manager/Features/Search/Search.dart';
+import 'package:expense_manager/Core/app_colors.dart';
+import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
+import 'package:expense_manager/Features/Profile/profile_view.dart';
+import 'package:expense_manager/Features/Search/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

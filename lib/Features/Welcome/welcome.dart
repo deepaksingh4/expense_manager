@@ -1,7 +1,8 @@
-import 'package:expense_manager/Core/AppColors.dart';
-import 'package:expense_manager/Core/ResponsiveButton.dart';
-import 'package:expense_manager/Features/Welcome/AppLargetext.dart';
-import 'package:expense_manager/Features/Welcome/AppText.dart';
+import 'package:expense_manager/Core/app_colors.dart';
+import 'package:expense_manager/Core/responsive_button.dart';
+import 'package:expense_manager/Core/router.dart';
+import 'package:expense_manager/Features/Welcome/app_large_text.dart';
+import 'package:expense_manager/Features/Welcome/app_text.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatelessWidget {
@@ -51,7 +52,10 @@ class SplashScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        ResponsiveButton()
+                        GestureDetector(child: ResponsiveButton(),
+                        onTap: (){
+                          Navigator.of(context).pushNamed(Navigation.mainView);
+                        },)
                       ],
                     ),
                     Column(

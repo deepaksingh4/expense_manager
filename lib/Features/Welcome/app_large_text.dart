@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../Core/AppColors.dart';
+import '../../Core/app_colors.dart';
 
 class AppLargeText extends StatelessWidget {
   final String text;

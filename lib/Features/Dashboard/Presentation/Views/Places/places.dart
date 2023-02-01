@@ -1,5 +1,5 @@
-import 'package:expense_manager/Features/Welcome/AppLargetext.dart';
-import 'package:expense_manager/Features/Welcome/AppText.dart';
+import 'package:expense_manager/Features/Welcome/app_large_text.dart';
+import 'package:expense_manager/Features/Welcome/app_text.dart';
 import 'package:flutter/material.dart';
 
 class Places extends StatelessWidget {
