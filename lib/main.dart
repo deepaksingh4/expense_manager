@@ -1,8 +1,11 @@
 import 'package:expense_manager/Core/router.dart';
 import 'package:expense_manager/Features/Welcome/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  await FlutterConfig.loadEnvVariables();
   runApp(const ExpenseManager());
 }
 
