@@ -1,3 +1,5 @@
+import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
+
 /// albumId : 1
 /// id : 1
 /// title : "accusamus beatae ad facilis cum similique qui sunt"
@@ -67,4 +69,6 @@ class ImageDataModel {
     map['thumbnailUrl'] = _thumbnailUrl;
     return map;
   }
+
+
 }

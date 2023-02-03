@@ -19,9 +19,6 @@ class DashboardCubit extends Cubit<DashboardState>{
 
   loadContent() async{
     var images = await useCase.getImageList();
-    emit(LoadedContentState(images));
+    emit(LoadedContentState(images!));
   }
-
-
-
 }

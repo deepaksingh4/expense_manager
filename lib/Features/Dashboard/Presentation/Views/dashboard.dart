@@ -8,6 +8,7 @@ import 'package:expense_manager/Features/Welcome/app_large_text.dart';
 import 'package:expense_manager/Features/Welcome/app_text.dart';
 import 'package:flutter/material.dart';
 import 'Places/places.dart';
+import 'package:intl/intl.dart';
 
 enum Sections { places, inspiration, emotion }
 
@@ -32,7 +33,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
               children: [
                 BlocBuilder<DashboardCubit, DashboardState>(
                   builder: (context, state) {
-                    if (state is LoadingContentState) {
+                    if (state is LoadedContentState) {
                       return Container(
                         margin:
                             const EdgeInsets.only(left: 20, right: 20, top: 20),

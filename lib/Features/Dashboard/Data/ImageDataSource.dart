@@ -3,18 +3,20 @@ import 'package:expense_manager/Core/http_handler.dart';
 import 'package:expense_manager/Features/Dashboard/Data/ImageDataModel.dart';
 
 class ImageDataSource {
-  Future<List<ImageDataModel>?> getImages() async{
-    //http call
-    //return the list of images
-    await HttpHandler()
-        .performGet(path: Endpoints.images.url(), success: (data) {
-          print(data);
-          var results = ImageDataModel()..fromJson(data);
-
-          return results;
-    }, failure: (error) {
-          return null;
-    });
-    return null;
+  Future<List<ImageDataModel>?> getImages() async {
+    List<ImageDataModel> res = [];
+    await HttpHandler().performGet(
+        path: Endpoints.images.url(),
+        success: (data) {
+          var jsonData = data.body;
+          for (final j in jsonData) {
+            var result = ImageDataModel()..fromJson(j);
+            res.add(result);
+          }
+        },
+        failure: (error) {
+          print("Error occured $error");
+        });
+  return res;
   }
 }

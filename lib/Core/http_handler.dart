@@ -13,19 +13,18 @@ class APIResponse {
 
 class HttpHandler {
 
-  performGet({required String path, success = (dynamic), failure = (dynamic)}) async {
+  performGet({required String path, success = (APIResponse), failure = (dynamic)}) async {
       try{
         var response = await Dio().get(path);
         if (response.statusCode == 200){
           print("®");
-          var jsonRes = APIResponse(body: converter.jsonDecode(response.data));
-            print(jsonRes);
+          var jsonRes = APIResponse(body: response.data);
            success(jsonRes);
         }else{
            failure(APIResponse(error: Error()));
         }
       }catch(error){
-        failure(Future.error(error));
+        failure(APIResponse(error: FallThroughError()));
       }
   }
 }

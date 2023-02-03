@@ -7,8 +7,10 @@ class Endpoints {
 
 extension ApiUrls on String{
   String url(){
-    final baseURL = FlutterConfig.get('BASE_URL');
+    final baseURL = String.fromEnvironment("BASE_URL");
     return baseURL + this;
+
+  //  https://jsonplaceholder.typicode.com/photos
   }
 }
 
