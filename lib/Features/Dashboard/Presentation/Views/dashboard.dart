@@ -31,30 +31,21 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocBuilder<DashboardCubit, DashboardState>(
-                  builder: (context, state) {
-                    if (state is LoadedContentState) {
-                      return Container(
-                        margin:
-                            const EdgeInsets.only(left: 20, right: 20, top: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Icon(Icons.menu_sharp),
-                            Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: AppColors.accentColor),
-                            )
-                          ],
-                        ),
-                      );
-                    } else {
-                      return Container();
-                    }
-                  },
+                Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(Icons.menu_sharp),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.accentColor),
+                      )
+                    ],
+                  ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +103,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                     Container(
                       height: 100,
                       width: double.maxFinite,
-                      margin: EdgeInsets.only(left: 20),
+                      margin: const EdgeInsets.only(left: 20),
                       child: ListView.builder(
                           itemCount: 5,
                           scrollDirection: Axis.horizontal,
@@ -143,13 +134,20 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                             );
                           }),
                     ),
-                    Container(
-                      height: 180,
-                      width: double.maxFinite,
-                      child: _getItems(context, Sections.inspiration),
-                    )
                   ],
-                )
+                ),
+                BlocBuilder<DashboardCubit, DashboardState>(
+                    builder: (context, state) {
+                  if (state is LoadedContentState && state.images.isNotEmpty) {
+                    return Container(
+                      height: 200,
+                        width: double.maxFinite,
+                        child: _getItems(context, Sections.emotion,
+                            count: state.images.length));
+                  } else {
+                    return Container();
+                  }
+                })
               ],
             ),
           ),
@@ -158,9 +156,9 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
     );
   }
 
-  ListView _getItems(BuildContext cxt, Sections section) {
+  ListView _getItems(BuildContext cxt, Sections section, {int count = 3}) {
     return ListView.builder(
-        itemCount: 3,
+        itemCount: count,
         scrollDirection: Axis.horizontal,
         itemBuilder: (ctx, index) {
           switch (section) {

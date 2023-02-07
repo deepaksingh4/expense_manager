@@ -6,8 +6,8 @@ class Inspiration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 250,
+      width: 150,
+      height: 180,
 
       margin: const EdgeInsets.only(left: 10, top: 20),
       decoration: BoxDecoration(

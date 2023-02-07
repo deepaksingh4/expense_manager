@@ -6,6 +6,7 @@ import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
 /// url : "https://via.placeholder.com/600/92c952"
 /// thumbnailUrl : "https://via.placeholder.com/150/92c952"
 
+
 class ImageDataModel {
   ImageDataModel({
     num? albumId,

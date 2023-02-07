@@ -7,7 +7,7 @@ class Endpoints {
 
 extension ApiUrls on String{
   String url(){
-    final baseURL = String.fromEnvironment("BASE_URL");
+    const baseURL = "https://jsonplaceholder.typicode.com/";
     return baseURL + this;
 
   //  https://jsonplaceholder.typicode.com/photos

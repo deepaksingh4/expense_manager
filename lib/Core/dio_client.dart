@@ -11,13 +11,12 @@ class APIResponse {
 }
 
 
-class HttpHandler {
-
+class DioClient {
+final Dio dio = Dio();
   performGet({required String path, success = (APIResponse), failure = (dynamic)}) async {
       try{
-        var response = await Dio().get(path);
+        var response = await dio.get(path);
         if (response.statusCode == 200){
-          print("®");
           var jsonRes = APIResponse(body: response.data);
            success(jsonRes);
         }else{
