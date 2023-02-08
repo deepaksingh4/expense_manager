@@ -1,5 +1,5 @@
-import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
+import 'package:expense_manager/Features/Dashboard/Data/ImageDataModel.dart';
 
 abstract class ImagesRepository{
-  Future<List<ImageModel>?> getAllImages();
+  Future<List<ImageDataModel>> getAllImages();
 }

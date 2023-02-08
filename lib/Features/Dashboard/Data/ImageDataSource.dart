@@ -3,7 +3,7 @@ import 'package:expense_manager/Core/dio_client.dart';
 import 'package:expense_manager/Features/Dashboard/Data/ImageDataModel.dart';
 
 class ImageDataSource {
-  Future<List<ImageDataModel>?> getImages() async {
+  Future<List<ImageDataModel>> getImages() async {
     List<ImageDataModel> res = [];
     await DioClient().performGet(
         path: Endpoints.images.url(),

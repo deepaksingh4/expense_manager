@@ -1,12 +1,13 @@
+import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
 import 'package:expense_manager/Features/Login/Presentation/login.dart';
 import 'package:expense_manager/Features/main_View.dart';
 import 'package:flutter/cupertino.dart';
 
 class Navigation {
   static final navKey = GlobalKey<NavigatorState>();
-
   static const mainView = '/mainView';
   static const login = '/login';
+  static const dashboard = '/dashboard';
 }
 
 Route? generateRoutes(RouteSettings settings) {
@@ -17,6 +18,8 @@ Route? generateRoutes(RouteSettings settings) {
       return buildRoute(settings, const MainView());
     case Navigation.login:
       return buildRoute(settings, Login());
+    case Navigation.dashboard:
+      return buildRoute(settings, const Dashboard());
     default:
       return null;
   }

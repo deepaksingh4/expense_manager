@@ -24,7 +24,8 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
     return BlocProvider(
-      create: (context) => DashboardCubit()..loadContent(),
+      create: (context) => DashboardCubit()
+        ..loadContent(),
       child: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
@@ -163,11 +164,11 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
         itemBuilder: (ctx, index) {
           switch (section) {
             case Sections.emotion:
-              return Emotions();
+              return const Emotions();
             case Sections.inspiration:
-              return Inspiration();
+              return const Inspiration();
             case Sections.places:
-              return Places();
+              return const Places();
           }
         });
   }
