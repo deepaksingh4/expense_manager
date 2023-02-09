@@ -13,5 +13,3 @@ extension ApiUrls on String{
   //  https://jsonplaceholder.typicode.com/photos
   }
 }
-
-
