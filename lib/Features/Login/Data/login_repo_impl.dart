@@ -10,7 +10,7 @@ class LoginRepositoryIMPL extends LoginRepository{
 
   @override
   Future<UserDataModel> getUserDetails(String username, String password)  async{
-   return throw await userService.getUserDetails(username: username, password: password);
+   return await userService.getUserDetails(username: username, password: password);
   }
 
 }

@@ -2,7 +2,10 @@ import 'package:expense_manager/Core/router.dart';
 import 'package:expense_manager/Features/Login/Presentation/login.dart';
 import 'package:expense_manager/Features/Welcome/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_config/flutter_config.dart';
+
+import 'Features/Login/Presentation/login_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
@@ -15,11 +18,11 @@ class ExpenseManager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      onGenerateRoute: generateRoutes,
-      home: SafeArea(
-        child: Login(),
-      ),
-    );
+    return BlocProvider<LoginCubit>(
+        create: (context) => LoginCubit(),
+        child: const MaterialApp(
+          onGenerateRoute: generateRoutes,
+          home: Login(),
+        ));
   }
 }

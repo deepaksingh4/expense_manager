@@ -9,7 +9,7 @@ abstract class LoginUseCase {
       {required String username, required String password});
 }
 
-class UserLoginUseCase extends LoginUseCase{
+class UserLoginUseCase extends LoginUseCase {
   final LoginRepository _loginRepository;
 
   UserLoginUseCase(this._loginRepository);
@@ -17,11 +17,8 @@ class UserLoginUseCase extends LoginUseCase{
   @override
   Future<UserEntity> getUserDetails(
       {required String username, required String password}) async {
-    try {
-      UserDataModel model = await _loginRepository.getUserDetails(username, password);
-      return UserEntity(model.firstName, model.lastName);
-    } catch (e){
-      rethrow;
-    }
+    return await _loginRepository
+          .getUserDetails(username, password)
+          .then((model) => UserEntity(model.firstName, model.lastName));
   }
 }

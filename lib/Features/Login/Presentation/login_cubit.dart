@@ -22,7 +22,7 @@ final LoginUseCase _useCase = UserLoginUseCase(LoginRepositoryIMPL(UserLocalData
             username: username, password: password);
         emit(LoggedIn(user));
     } catch (e){
-      LoginFailed(e.toString());
+      emit(LoginFailed(e.toString()));
     }
   }
 }

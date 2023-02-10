@@ -22,32 +22,37 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    DrawerController controller = const DrawerController(
+        alignment: DrawerAlignment.start, child: Text('Sample1'),);
+
     TabController tabController = TabController(length: 3, vsync: this);
     return BlocProvider(
-      create: (context) => DashboardCubit()
-        ..loadContent(),
+      create: (context) => DashboardCubit()..loadContent(),
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            actions: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent, elevation: 0),
+                onPressed: () {},
+                child: const CircleAvatar(
+                  backgroundColor: Colors.redAccent,
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            ],
+          ),
+          drawer: controller,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Icon(Icons.menu_sharp),
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: AppColors.accentColor),
-                      )
-                    ],
-                  ),
-                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -141,7 +146,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                     builder: (context, state) {
                   if (state is LoadedContentState && state.images.isNotEmpty) {
                     return Container(
-                      height: 200,
+                        height: 200,
                         width: double.maxFinite,
                         child: _getItems(context, Sections.emotion,
                             count: state.images.length));

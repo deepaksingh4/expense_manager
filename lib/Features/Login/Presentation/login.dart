@@ -1,4 +1,6 @@
 import 'package:expense_manager/Core/AppExceptions.dart';
+import 'package:expense_manager/Core/app_colors.dart';
+import 'package:expense_manager/Core/router.dart';
 import 'package:expense_manager/Features/Login/Presentation/login_cubit.dart';
 import 'package:expense_manager/Features/Login/Presentation/login_states.dart';
 import 'package:flutter/material.dart';
@@ -19,50 +21,61 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginCubit(),
-      child:BlocBuilder<LoginCubit, LoginStates>(
-        builder: (cubit, state) {
-          switch (state){
-            case LoginFailed:
-            case LoggedIn:
-            case NotLoggedIn:
-            return Scaffold(
-              body: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const TextField(
-                    decoration: InputDecoration(
-                        hintText: 'Username', labelText: 'Username'),
+    return BlocConsumer<LoginCubit, LoginSates>(builder: (cxt, state) {
+      if (state is NotLoggedIn) {
+        return Scaffold(
+          backgroundColor: Colors.blueGrey,
+          body: SafeArea(
+            child: Center(
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.9,
+                    child: ListView(
+                       shrinkWrap: true,
+                        children: [
+                          TextField(
+                            decoration: const InputDecoration(
+                              hintText: 'Username', 
+                              labelText: 'Username',
+                            ),
+                            controller: usernameController,
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              hintText: 'Password',
+                              labelText: 'Password',
+                            ),
+                            obscureText: true,
+                            controller: passwordController,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
+                                  child: const Text('Login'),
+                                  onPressed: () {
+                                    context.read<LoginCubit>().logInUser(
+                                        username: usernameController.text,
+                                        password: passwordController.text);
+                                  },
+                                )
+                              ]),
+                        ]),
                   ),
-                  TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'Password',
-                      labelText: 'Password',
-                    ),
-                    obscureText: true,
-                    controller: passwordController,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    ElevatedButton(
-                      child: const Text('Login'),
-                      onPressed: () {
-                        context.read<LoginCubit>().logInUser(
-                            username: usernameController.text,
-                            password: passwordController.text);
-                      },
-                    )
-                  ]),
-                ]),
+                ),
               ),
-            );
-          }
-
-        }
-      )
-    );
+            ),
+          ),
+        );
+      } else {
+        return const SizedBox.shrink();
+      }
+    }, listener: (ctx, state) {
+      if (state is LoggedIn) {
+        Navigator.of(context).pushReplacementNamed(Navigation.dashboard);
+      }
+    });
   }
 }
-
-
