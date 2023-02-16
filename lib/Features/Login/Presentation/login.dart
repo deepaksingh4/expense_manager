@@ -74,7 +74,7 @@ class _LoginState extends State<Login> {
       }
     }, listener: (ctx, state) {
       if (state is LoggedIn) {
-        Navigator.of(context).pushReplacementNamed(Navigation.dashboard);
+        Navigator.of(context).pushReplacementNamed(Navigation.mainView);
       }
     });
   }

@@ -1,4 +1,5 @@
 import 'package:expense_manager/Core/router.dart';
+import 'package:expense_manager/Features/Listing/Presentation/ListGames.dart';
 import 'package:expense_manager/Features/Login/Presentation/login.dart';
 import 'package:expense_manager/Features/Welcome/welcome.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +14,25 @@ void main() async {
   runApp(const ExpenseManager());
 }
 
+// class ExpenseManager extends StatelessWidget {
+//   const ExpenseManager({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider<LoginCubit>(
+//         create: (context) => LoginCubit(),
+//         child: const MaterialApp(
+//           onGenerateRoute: generateRoutes,
+//           home: Login(),
+//         ));
+//   }
+// }
+
 class ExpenseManager extends StatelessWidget {
   const ExpenseManager({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoginCubit>(
-        create: (context) => LoginCubit(),
-        child: const MaterialApp(
-          onGenerateRoute: generateRoutes,
-          home: Login(),
-        ));
+    return const MaterialApp(home: ListGames());
   }
 }
