@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:expense_manager/Core/cubits/appCubitStates.dart';
 
+import '../../Domain/GameUIModel.dart';
+
 abstract class ListingStates extends Equatable{}
 
 class InitialListingState extends ListingStates{
@@ -8,13 +10,15 @@ class InitialListingState extends ListingStates{
   List<Object?> get props => throw UnimplementedError();
 }
 
-class LoadingHotels extends ListingStates{
+class LoadingGames extends ListingStates{
 
   @override
   List<Object?> get props => throw UnimplementedError();
 }
 
-class LoadedData extends ListingStates{
+class GamesLoaded extends ListingStates{
+  late final List<GameUIModel> games;
+  GamesLoaded({required this.games});
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [games];
 }

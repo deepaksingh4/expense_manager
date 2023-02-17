@@ -1,603 +1,588 @@
-class GameListModel {
-  GameListModel({
-    required this.count,
-    required this.next,
+// To parse this JSON data, do
+//
+//     final gameList = gameListFromJson(jsonString);
+
+import 'dart:convert';
+
+import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
+
+GameList gameListFromJson(String str) => GameList.fromJson(json.decode(str));
+
+String gameListToJson(GameList data) => json.encode(data.toJson());
+
+class GameList {
+  GameList({
+    this.count,
+    this.next,
     this.previous,
-    required this.results,
-    required this.seoTitle,
-    required this.seoDescription,
-    required this.seoKeywords,
-    required this.seoH1,
-    required this.noindex,
-    required this.nofollow,
-    required this.description,
-    required this.filters,
-    required this.nofollowCollections,
+    this.results,
+    this.seoTitle,
+    this.seoDescription,
+    this.seoKeywords,
+    this.seoH1,
+    this.noindex,
+    this.nofollow,
+    this.description,
+    this.filters,
+    this.nofollowCollections,
   });
-  late final int count;
-  late final String next;
-  late final Null previous;
-  late final List<Results> results;
-  late final String seoTitle;
-  late final String seoDescription;
-  late final String seoKeywords;
-  late final String seoH1;
-  late final bool noindex;
-  late final bool nofollow;
-  late final String description;
-  late final Filters filters;
-  late final List<String> nofollowCollections;
 
-  GameListModel.fromJson(Map<String, dynamic> json){
-    count = json['count'];
-    next = json['next'];
-    previous = null;
-    results = List.from(json['results']).map((e)=>Results.fromJson(e)).toList();
-    seoTitle = json['seo_title'];
-    seoDescription = json['seo_description'];
-    seoKeywords = json['seo_keywords'];
-    seoH1 = json['seo_h1'];
-    noindex = json['noindex'];
-    nofollow = json['nofollow'];
-    description = json['description'];
-    filters = Filters.fromJson(json['filters']);
-    nofollowCollections = List.castFrom<dynamic, String>(json['nofollow_collections']);
-  }
+  int? count;
+  String? next;
+  String? previous;
+  List<Result>? results;
+  String? seoTitle;
+  String? seoDescription;
+  String? seoKeywords;
+  String? seoH1;
+  bool? noindex;
+  bool? nofollow;
+  String? description;
+  Filters? filters;
+  List<String>? nofollowCollections;
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['count'] = count;
-    _data['next'] = next;
-    _data['previous'] = previous;
-    _data['results'] = results.map((e)=>e.toJson()).toList();
-    _data['seo_title'] = seoTitle;
-    _data['seo_description'] = seoDescription;
-    _data['seo_keywords'] = seoKeywords;
-    _data['seo_h1'] = seoH1;
-    _data['noindex'] = noindex;
-    _data['nofollow'] = nofollow;
-    _data['description'] = description;
-    _data['filters'] = filters.toJson();
-    _data['nofollow_collections'] = nofollowCollections;
-    return _data;
-  }
-}
+  factory GameList.fromJson(Map<String, dynamic> json) => GameList(
+    count: json["count"],
+    next: json["next"],
+    previous: json["previous"],
+    results: json["results"] == null ? [] : List<Result>.from(json["results"]!.map((x) => Result.fromJson(x))),
+    seoTitle: json["seo_title"],
+    seoDescription: json["seo_description"],
+    seoKeywords: json["seo_keywords"],
+    seoH1: json["seo_h1"],
+    noindex: json["noindex"],
+    nofollow: json["nofollow"],
+    description: json["description"],
+    filters: json["filters"] == null ? null : Filters.fromJson(json["filters"]),
+    nofollowCollections: json["nofollow_collections"] == null ? [] : List<String>.from(json["nofollow_collections"]!.map((x) => x)),
+  );
 
-class Results {
-  Results({
-    required this.id,
-    required this.slug,
-    required this.name,
-    required this.released,
-    required this.tba,
-    required this.backgroundImage,
-    required this.rating,
-    required this.ratingTop,
-    required this.ratings,
-    required this.ratingsCount,
-    required this.reviewsTextCount,
-    required this.added,
-    required this.addedByStatus,
-    required this.metacritic,
-    required this.playtime,
-    required this.suggestionsCount,
-    required this.updated,
-    this.userGame,
-    required this.reviewsCount,
-    required this.saturatedColor,
-    required this.dominantColor,
-    required this.platforms,
-    required this.parentPlatforms,
-    required this.genres,
-    required this.stores,
-    this.clip,
-    required this.tags,
-    required this.esrbRating,
-    required this.shortScreenshots,
-  });
-  late final int id;
-  late final String slug;
-  late final String name;
-  late final String released;
-  late final bool tba;
-  late final String backgroundImage;
-  late final double rating;
-  late final int ratingTop;
-  late final List<Ratings> ratings;
-  late final int ratingsCount;
-  late final int reviewsTextCount;
-  late final int added;
-  late final AddedByStatus addedByStatus;
-  late final int metacritic;
-  late final int playtime;
-  late final int suggestionsCount;
-  late final String updated;
-  late final Null userGame;
-  late final int reviewsCount;
-  late final String saturatedColor;
-  late final String dominantColor;
-  late final List<Platforms> platforms;
-  late final List<ParentPlatforms> parentPlatforms;
-  late final List<Genres> genres;
-  late final List<Stores> stores;
-  late final Null clip;
-  late final List<Tags> tags;
-  late final EsrbRating esrbRating;
-  late final List<ShortScreenshots> shortScreenshots;
-
-  Results.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    slug = json['slug'];
-    name = json['name'];
-    released = json['released'];
-    tba = json['tba'];
-    backgroundImage = json['background_image'];
-    rating = json['rating'];
-    ratingTop = json['rating_top'];
-    ratings = List.from(json['ratings']).map((e)=>Ratings.fromJson(e)).toList();
-    ratingsCount = json['ratings_count'];
-    reviewsTextCount = json['reviews_text_count'];
-    added = json['added'];
-    addedByStatus = AddedByStatus.fromJson(json['added_by_status']);
-    metacritic = json['metacritic'];
-    playtime = json['playtime'];
-    suggestionsCount = json['suggestions_count'];
-    updated = json['updated'];
-    userGame = null;
-    reviewsCount = json['reviews_count'];
-    saturatedColor = json['saturated_color'];
-    dominantColor = json['dominant_color'];
-    platforms = List.from(json['platforms']).map((e)=>Platforms.fromJson(e)).toList();
-    parentPlatforms = List.from(json['parent_platforms']).map((e)=>ParentPlatforms.fromJson(e)).toList();
-    genres = List.from(json['genres']).map((e)=>Genres.fromJson(e)).toList();
-    stores = List.from(json['stores']).map((e)=>Stores.fromJson(e)).toList();
-    clip = null;
-    tags = List.from(json['tags']).map((e)=>Tags.fromJson(e)).toList();
-    esrbRating = EsrbRating.fromJson(json['esrb_rating']);
-    shortScreenshots = List.from(json['short_screenshots']).map((e)=>ShortScreenshots.fromJson(e)).toList();
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['slug'] = slug;
-    _data['name'] = name;
-    _data['released'] = released;
-    _data['tba'] = tba;
-    _data['background_image'] = backgroundImage;
-    _data['rating'] = rating;
-    _data['rating_top'] = ratingTop;
-    _data['ratings'] = ratings.map((e)=>e.toJson()).toList();
-    _data['ratings_count'] = ratingsCount;
-    _data['reviews_text_count'] = reviewsTextCount;
-    _data['added'] = added;
-    _data['added_by_status'] = addedByStatus.toJson();
-    _data['metacritic'] = metacritic;
-    _data['playtime'] = playtime;
-    _data['suggestions_count'] = suggestionsCount;
-    _data['updated'] = updated;
-    _data['user_game'] = userGame;
-    _data['reviews_count'] = reviewsCount;
-    _data['saturated_color'] = saturatedColor;
-    _data['dominant_color'] = dominantColor;
-    _data['platforms'] = platforms.map((e)=>e.toJson()).toList();
-    _data['parent_platforms'] = parentPlatforms.map((e)=>e.toJson()).toList();
-    _data['genres'] = genres.map((e)=>e.toJson()).toList();
-    _data['stores'] = stores.map((e)=>e.toJson()).toList();
-    _data['clip'] = clip;
-    _data['tags'] = tags.map((e)=>e.toJson()).toList();
-    _data['esrb_rating'] = esrbRating.toJson();
-    _data['short_screenshots'] = shortScreenshots.map((e)=>e.toJson()).toList();
-    return _data;
-  }
-}
-
-class Ratings {
-  Ratings({
-    required this.id,
-    required this.title,
-    required this.count,
-    required this.percent,
-  });
-  late final int id;
-  late final String title;
-  late final int count;
-  late final double percent;
-
-  Ratings.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    title = json['title'];
-    count = json['count'];
-    percent = json['percent'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['title'] = title;
-    _data['count'] = count;
-    _data['percent'] = percent;
-    return _data;
-  }
-}
-
-class AddedByStatus {
-  AddedByStatus({
-    required this.yet,
-    required this.owned,
-    required this.beaten,
-    required this.toplay,
-    required this.dropped,
-    required this.playing,
-  });
-  late final int yet;
-  late final int owned;
-  late final int beaten;
-  late final int toplay;
-  late final int dropped;
-  late final int playing;
-
-  AddedByStatus.fromJson(Map<String, dynamic> json){
-    yet = json['yet'];
-    owned = json['owned'];
-    beaten = json['beaten'];
-    toplay = json['toplay'];
-    dropped = json['dropped'];
-    playing = json['playing'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['yet'] = yet;
-    _data['owned'] = owned;
-    _data['beaten'] = beaten;
-    _data['toplay'] = toplay;
-    _data['dropped'] = dropped;
-    _data['playing'] = playing;
-    return _data;
-  }
-}
-
-class Platforms {
-  Platforms({
-    required this.platform,
-    required this.releasedAt,
-    this.requirementsEn,
-    this.requirementsRu,
-  });
-  late final Platform platform;
-  late final String releasedAt;
-  late final RequirementsEn? requirementsEn;
-  late final Null requirementsRu;
-
-  Platforms.fromJson(Map<String, dynamic> json){
-    platform = Platform.fromJson(json['platform']);
-    releasedAt = json['released_at'];
-    requirementsEn = null;
-    requirementsRu = null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['platform'] = platform.toJson();
-    _data['released_at'] = releasedAt;
-    _data['requirements_en'] = requirementsEn;
-    _data['requirements_ru'] = requirementsRu;
-    return _data;
-  }
-}
-
-class Platform {
-  Platform({
-    required this.id,
-    required this.name,
-    required this.slug,
-    this.image,
-    this.yearEnd,
-    this.yearStart,
-    required this.gamesCount,
-    required this.imageBackground,
-  });
-  late final int id;
-  late final String name;
-  late final String slug;
-  late final Null image;
-  late final Null yearEnd;
-  late final int? yearStart;
-  late final int gamesCount;
-  late final String imageBackground;
-
-  Platform.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-    image = null;
-    yearEnd = null;
-    yearStart = null;
-    gamesCount = json['games_count'];
-    imageBackground = json['image_background'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['slug'] = slug;
-    _data['image'] = image;
-    _data['year_end'] = yearEnd;
-    _data['year_start'] = yearStart;
-    _data['games_count'] = gamesCount;
-    _data['image_background'] = imageBackground;
-    return _data;
-  }
-}
-
-class RequirementsEn {
-  RequirementsEn({
-    required this.minimum,
-    required this.recommended,
-  });
-  late final String minimum;
-  late final String recommended;
-
-  RequirementsEn.fromJson(Map<String, dynamic> json){
-    minimum = json['minimum'];
-    recommended = json['recommended'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['minimum'] = minimum;
-    _data['recommended'] = recommended;
-    return _data;
-  }
-}
-
-class ParentPlatforms {
-  ParentPlatforms({
-    required this.platform,
-  });
-  late final Platform platform;
-
-  ParentPlatforms.fromJson(Map<String, dynamic> json){
-    platform = Platform.fromJson(json['platform']);
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['platform'] = platform.toJson();
-    return _data;
-  }
-}
-
-class Genres {
-  Genres({
-    required this.id,
-    required this.name,
-    required this.slug,
-    required this.gamesCount,
-    required this.imageBackground,
-  });
-  late final int id;
-  late final String name;
-  late final String slug;
-  late final int gamesCount;
-  late final String imageBackground;
-
-  Genres.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-    gamesCount = json['games_count'];
-    imageBackground = json['image_background'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['slug'] = slug;
-    _data['games_count'] = gamesCount;
-    _data['image_background'] = imageBackground;
-    return _data;
-  }
-}
-
-class Stores {
-  Stores({
-    required this.id,
-    required this.store,
-  });
-  late final int id;
-  late final Store store;
-
-  Stores.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    store = Store.fromJson(json['store']);
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['store'] = store.toJson();
-    return _data;
-  }
-}
-
-class Store {
-  Store({
-    required this.id,
-    required this.name,
-    required this.slug,
-    required this.domain,
-    required this.gamesCount,
-    required this.imageBackground,
-  });
-  late final int id;
-  late final String name;
-  late final String slug;
-  late final String domain;
-  late final int gamesCount;
-  late final String imageBackground;
-
-  Store.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-    domain = json['domain'];
-    gamesCount = json['games_count'];
-    imageBackground = json['image_background'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['slug'] = slug;
-    _data['domain'] = domain;
-    _data['games_count'] = gamesCount;
-    _data['image_background'] = imageBackground;
-    return _data;
-  }
-}
-
-class Tags {
-  Tags({
-    required this.id,
-    required this.name,
-    required this.slug,
-    required this.language,
-    required this.gamesCount,
-    required this.imageBackground,
-  });
-  late final int id;
-  late final String name;
-  late final String slug;
-  late final String language;
-  late final int gamesCount;
-  late final String imageBackground;
-
-  Tags.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-    language = json['language'];
-    gamesCount = json['games_count'];
-    imageBackground = json['image_background'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['slug'] = slug;
-    _data['language'] = language;
-    _data['games_count'] = gamesCount;
-    _data['image_background'] = imageBackground;
-    return _data;
-  }
-}
-
-class EsrbRating {
-  EsrbRating({
-    required this.id,
-    required this.name,
-    required this.slug,
-  });
-  late final int id;
-  late final String name;
-  late final String slug;
-
-  EsrbRating.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['slug'] = slug;
-    return _data;
-  }
-}
-
-class ShortScreenshots {
-  ShortScreenshots({
-    required this.id,
-    required this.image,
-  });
-  late final int id;
-  late final String image;
-
-  ShortScreenshots.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-    image = json['image'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['image'] = image;
-    return _data;
-  }
+  Map<String, dynamic> toJson() => {
+    "count": count,
+    "next": next,
+    "previous": previous,
+    "results": results == null ? [] : List<dynamic>.from(results!.map((x) => x.toJson())),
+    "seo_title": seoTitle,
+    "seo_description": seoDescription,
+    "seo_keywords": seoKeywords,
+    "seo_h1": seoH1,
+    "noindex": noindex,
+    "nofollow": nofollow,
+    "description": description,
+    "filters": filters?.toJson(),
+    "nofollow_collections": nofollowCollections == null ? [] : List<dynamic>.from(nofollowCollections!.map((x) => x)),
+  };
 }
 
 class Filters {
   Filters({
-    required this.years,
+    this.years,
   });
-  late final List<Years> years;
 
-  Filters.fromJson(Map<String, dynamic> json){
-    years = List.from(json['years']).map((e)=>Years.fromJson(e)).toList();
-  }
+  List<FiltersYear>? years;
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['years'] = years.map((e)=>e.toJson()).toList();
-    return _data;
-  }
+  factory Filters.fromJson(Map<String, dynamic> json) => Filters(
+    years: json["years"] == null ? [] : List<FiltersYear>.from(json["years"]!.map((x) => FiltersYear.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "years": years == null ? [] : List<dynamic>.from(years!.map((x) => x.toJson())),
+  };
 }
 
-class Years {
-  Years({
-    required this.from,
-    required this.to,
-    required this.filter,
-    required this.decade,
-    required this.years,
-    required this.nofollow,
-    required this.count,
+class FiltersYear {
+  FiltersYear({
+    this.from,
+    this.to,
+    this.filter,
+    this.decade,
+    this.years,
+    this.nofollow,
+    this.count,
   });
-  late final int from;
-  late final int to;
-  late final String filter;
-  late final int decade;
-  late final List<Years> years;
-  late final bool nofollow;
-  late final int count;
 
-  Years.fromJson(Map<String, dynamic> json){
-    from = json['from'];
-    to = json['to'];
-    filter = json['filter'];
-    decade = json['decade'];
-    years = List.from(json['years']).map((e)=>Years.fromJson(e)).toList();
-    nofollow = json['nofollow'];
-    count = json['count'];
-  }
+  int? from;
+  int? to;
+  String? filter;
+  int? decade;
+  List<YearYear>? years;
+  bool? nofollow;
+  int? count;
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['from'] = from;
-    _data['to'] = to;
-    _data['filter'] = filter;
-    _data['decade'] = decade;
-    _data['years'] = years.map((e)=>e.toJson()).toList();
-    _data['nofollow'] = nofollow;
-    _data['count'] = count;
-    return _data;
+  factory FiltersYear.fromJson(Map<String, dynamic> json) => FiltersYear(
+    from: json["from"],
+    to: json["to"],
+    filter: json["filter"],
+    decade: json["decade"],
+    years: json["years"] == null ? [] : List<YearYear>.from(json["years"]!.map((x) => YearYear.fromJson(x))),
+    nofollow: json["nofollow"],
+    count: json["count"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "from": from,
+    "to": to,
+    "filter": filter,
+    "decade": decade,
+    "years": years == null ? [] : List<dynamic>.from(years!.map((x) => x.toJson())),
+    "nofollow": nofollow,
+    "count": count,
+  };
+}
+
+class YearYear {
+  YearYear({
+    this.year,
+    this.count,
+    this.nofollow,
+  });
+
+  int? year;
+  int? count;
+  bool? nofollow;
+
+  factory YearYear.fromJson(Map<String, dynamic> json) => YearYear(
+    year: json["year"],
+    count: json["count"],
+    nofollow: json["nofollow"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "year": year,
+    "count": count,
+    "nofollow": nofollow,
+  };
+}
+
+class Result extends GameUIModel{
+  Result({
+    id,
+    this.slug,
+    name,
+    this.released,
+    this.tba,
+    backgroundImage,
+    rating,
+    this.ratingTop,
+    this.ratings,
+    this.ratingsCount,
+    this.reviewsTextCount,
+    this.added,
+    this.addedByStatus,
+    this.metacritic,
+    this.playtime,
+    this.suggestionsCount,
+    this.updated,
+    this.userGame,
+    reviewsCount,
+    this.saturatedColor,
+    this.dominantColor,
+    this.platforms,
+    this.parentPlatforms,
+    this.genres,
+    this.stores,
+    this.clip,
+    this.tags,
+    this.esrbRating,
+    this.shortScreenshots,
+  }):super(id: id, rating: rating, reviewsCount: reviewsCount, name: name, backgroundImage: backgroundImage);
+
+  String? slug;
+  DateTime? released;
+  bool? tba;
+  int? ratingTop;
+  List<Rating>? ratings;
+  int? ratingsCount;
+  int? reviewsTextCount;
+  int? added;
+  AddedByStatus? addedByStatus;
+  int? metacritic;
+  int? playtime;
+  int? suggestionsCount;
+  DateTime? updated;
+  dynamic userGame;
+  String? saturatedColor;
+  String? dominantColor;
+  List<PlatformElement>? platforms;
+  List<ParentPlatform>? parentPlatforms;
+  List<Genre>? genres;
+  List<Store>? stores;
+  dynamic clip;
+  List<Genre>? tags;
+  EsrbRating? esrbRating;
+  List<ShortScreenshot>? shortScreenshots;
+
+  factory Result.fromJson(Map<String, dynamic> json) => Result(
+    id: json["id"],
+    slug: json["slug"],
+    name: json["name"],
+    released: json["released"] == null ? null : DateTime.parse(json["released"]),
+    tba: json["tba"],
+    backgroundImage: json["background_image"],
+    rating: json["rating"]?.toDouble(),
+    ratingTop: json["rating_top"],
+    ratings: json["ratings"] == null ? [] : List<Rating>.from(json["ratings"]!.map((x) => Rating.fromJson(x))),
+    ratingsCount: json["ratings_count"],
+    reviewsTextCount: json["reviews_text_count"],
+    added: json["added"],
+    addedByStatus: json["added_by_status"] == null ? null : AddedByStatus.fromJson(json["added_by_status"]),
+    metacritic: json["metacritic"],
+    playtime: json["playtime"],
+    suggestionsCount: json["suggestions_count"],
+    updated: json["updated"] == null ? null : DateTime.parse(json["updated"]),
+    userGame: json["user_game"],
+    reviewsCount: json["reviews_count"],
+    saturatedColor: json["saturated_color"],
+    dominantColor: json["dominant_color"],
+    platforms: json["platforms"] == null ? [] : List<PlatformElement>.from(json["platforms"]!.map((x) => PlatformElement.fromJson(x))),
+    parentPlatforms: json["parent_platforms"] == null ? [] : List<ParentPlatform>.from(json["parent_platforms"]!.map((x) => ParentPlatform.fromJson(x))),
+    genres: json["genres"] == null ? [] : List<Genre>.from(json["genres"]!.map((x) => Genre.fromJson(x))),
+    stores: json["stores"] == null ? [] : List<Store>.from(json["stores"]!.map((x) => Store.fromJson(x))),
+    clip: json["clip"],
+    tags: json["tags"] == null ? [] : List<Genre>.from(json["tags"]!.map((x) => Genre.fromJson(x))),
+    esrbRating: json["esrb_rating"] == null ? null : EsrbRating.fromJson(json["esrb_rating"]),
+    shortScreenshots: json["short_screenshots"] == null ? [] : List<ShortScreenshot>.from(json["short_screenshots"]!.map((x) => ShortScreenshot.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "slug": slug,
+    "name": name,
+    "released": "${released!.year.toString().padLeft(4, '0')}-${released!.month.toString().padLeft(2, '0')}-${released!.day.toString().padLeft(2, '0')}",
+    "tba": tba,
+    "background_image": backgroundImage,
+    "rating": rating,
+    "rating_top": ratingTop,
+    "ratings": ratings == null ? [] : List<dynamic>.from(ratings!.map((x) => x.toJson())),
+    "ratings_count": ratingsCount,
+    "reviews_text_count": reviewsTextCount,
+    "added": added,
+    "added_by_status": addedByStatus?.toJson(),
+    "metacritic": metacritic,
+    "playtime": playtime,
+    "suggestions_count": suggestionsCount,
+    "updated": updated?.toIso8601String(),
+    "user_game": userGame,
+    "reviews_count": reviewsCount,
+    "saturated_color": saturatedColor,
+    "dominant_color": dominantColor,
+    "platforms": platforms == null ? [] : List<dynamic>.from(platforms!.map((x) => x.toJson())),
+    "parent_platforms": parentPlatforms == null ? [] : List<dynamic>.from(parentPlatforms!.map((x) => x.toJson())),
+    "genres": genres == null ? [] : List<dynamic>.from(genres!.map((x) => x.toJson())),
+    "stores": stores == null ? [] : List<dynamic>.from(stores!.map((x) => x.toJson())),
+    "clip": clip,
+    "tags": tags == null ? [] : List<dynamic>.from(tags!.map((x) => x.toJson())),
+    "esrb_rating": esrbRating?.toJson(),
+    "short_screenshots": shortScreenshots == null ? [] : List<dynamic>.from(shortScreenshots!.map((x) => x.toJson())),
+  };
+}
+
+class AddedByStatus {
+  AddedByStatus({
+    this.yet,
+    this.owned,
+    this.beaten,
+    this.toplay,
+    this.dropped,
+    this.playing,
+  });
+
+  int? yet;
+  int? owned;
+  int? beaten;
+  int? toplay;
+  int? dropped;
+  int? playing;
+
+  factory AddedByStatus.fromJson(Map<String, dynamic> json) => AddedByStatus(
+    yet: json["yet"],
+    owned: json["owned"],
+    beaten: json["beaten"],
+    toplay: json["toplay"],
+    dropped: json["dropped"],
+    playing: json["playing"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "yet": yet,
+    "owned": owned,
+    "beaten": beaten,
+    "toplay": toplay,
+    "dropped": dropped,
+    "playing": playing,
+  };
+}
+
+class EsrbRating {
+  EsrbRating({
+    this.id,
+    this.name,
+    this.slug,
+  });
+
+  int? id;
+  String? name;
+  String? slug;
+
+  factory EsrbRating.fromJson(Map<String, dynamic> json) => EsrbRating(
+    id: json["id"],
+    name: json["name"],
+    slug: json["slug"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "slug": slug,
+  };
+}
+
+class Genre {
+  Genre({
+    this.id,
+    this.name,
+    this.slug,
+    this.gamesCount,
+    this.imageBackground,
+    this.domain,
+    this.language,
+  });
+
+  int? id;
+  String? name;
+  String? slug;
+  int? gamesCount;
+  String? imageBackground;
+  String? domain;
+  Language? language;
+
+  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
+    id: json["id"],
+    name: json["name"],
+    slug: json["slug"],
+    gamesCount: json["games_count"],
+    imageBackground: json["image_background"],
+    domain: json["domain"],
+    language: languageValues.map[json["language"]]!,
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "slug": slug,
+    "games_count": gamesCount,
+    "image_background": imageBackground,
+    "domain": domain,
+    "language": languageValues.reverse[language],
+  };
+}
+
+enum Language { ENG }
+
+final languageValues = EnumValues({
+  "eng": Language.ENG
+});
+
+class ParentPlatform {
+  ParentPlatform({
+    this.platform,
+  });
+
+  EsrbRating? platform;
+
+  factory ParentPlatform.fromJson(Map<String, dynamic> json) => ParentPlatform(
+    platform: json["platform"] == null ? null : EsrbRating.fromJson(json["platform"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "platform": platform?.toJson(),
+  };
+}
+
+class PlatformElement {
+  PlatformElement({
+    this.platform,
+    this.releasedAt,
+    this.requirementsEn,
+    this.requirementsRu,
+  });
+
+  PlatformPlatform? platform;
+  DateTime? releasedAt;
+  RequirementsEn? requirementsEn;
+  RequirementsRu? requirementsRu;
+
+  factory PlatformElement.fromJson(Map<String, dynamic> json) => PlatformElement(
+    platform: json["platform"] == null ? null : PlatformPlatform.fromJson(json["platform"]),
+    releasedAt: json["released_at"] == null ? null : DateTime.parse(json["released_at"]),
+    requirementsEn: json["requirements_en"] == null ? null : RequirementsEn.fromJson(json["requirements_en"]),
+    requirementsRu: json["requirements_ru"] == null ? null : RequirementsRu.fromJson(json["requirements_ru"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "platform": platform?.toJson(),
+    "released_at": "${releasedAt!.year.toString().padLeft(4, '0')}-${releasedAt!.month.toString().padLeft(2, '0')}-${releasedAt!.day.toString().padLeft(2, '0')}",
+    "requirements_en": requirementsEn?.toJson(),
+    "requirements_ru": requirementsRu?.toJson(),
+  };
+}
+
+class PlatformPlatform {
+  PlatformPlatform({
+    this.id,
+    this.name,
+    this.slug,
+    this.image,
+    this.yearEnd,
+    this.yearStart,
+    this.gamesCount,
+    this.imageBackground,
+  });
+
+  int? id;
+  String? name;
+  String? slug;
+  dynamic image;
+  dynamic yearEnd;
+  dynamic yearStart;
+  int? gamesCount;
+  String? imageBackground;
+
+  factory PlatformPlatform.fromJson(Map<String, dynamic> json) => PlatformPlatform(
+    id: json["id"],
+    name: json["name"],
+    slug: json["slug"],
+    image: json["image"],
+    yearEnd: json["year_end"],
+    yearStart: json["year_start"],
+    gamesCount: json["games_count"],
+    imageBackground: json["image_background"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "slug": slug,
+    "image": image,
+    "year_end": yearEnd,
+    "year_start": yearStart,
+    "games_count": gamesCount,
+    "image_background": imageBackground,
+  };
+}
+
+class RequirementsEn {
+  RequirementsEn({
+    this.minimum,
+  });
+
+  String? minimum;
+
+  factory RequirementsEn.fromJson(Map<String, dynamic> json) => RequirementsEn(
+    minimum: json["minimum"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "minimum": minimum,
+  };
+}
+
+class RequirementsRu {
+  RequirementsRu({
+    this.minimum,
+    this.recommended,
+  });
+
+  String? minimum;
+  String? recommended;
+
+  factory RequirementsRu.fromJson(Map<String, dynamic> json) => RequirementsRu(
+    minimum: json["minimum"],
+    recommended: json["recommended"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "minimum": minimum,
+    "recommended": recommended,
+  };
+}
+
+class Rating {
+  Rating({
+    this.id,
+    this.title,
+    this.count,
+    this.percent,
+  });
+
+  int? id;
+  String? title;
+  int? count;
+  double? percent;
+
+  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
+    id: json["id"],
+    title: json["title"],
+    count: json["count"],
+    percent: json["percent"]?.toDouble(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "title": title,
+    "count": count,
+    "percent": percent,
+  };
+}
+
+class ShortScreenshot {
+  ShortScreenshot({
+    this.id,
+    this.image,
+  });
+
+  int? id;
+  String? image;
+
+  factory ShortScreenshot.fromJson(Map<String, dynamic> json) => ShortScreenshot(
+    id: json["id"],
+    image: json["image"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "image": image,
+  };
+}
+
+class Store {
+  Store({
+    this.id,
+    this.store,
+  });
+
+  int? id;
+  Genre? store;
+
+  factory Store.fromJson(Map<String, dynamic> json) => Store(
+    id: json["id"],
+    store: json["store"] == null ? null : Genre.fromJson(json["store"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "store": store?.toJson(),
+  };
+}
+
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
   }
 }
