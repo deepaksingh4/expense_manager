@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
 import 'package:expense_manager/Features/Listing/Presentation/rating_widget.dart';
 import 'package:expense_manager/Features/Listing/Presentation/tags_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
@@ -61,11 +60,11 @@ class GameContent extends StatelessWidget {
          const SizedBox(
             height: 10,
           ),
-          TagsWidget(),
+          TagsWidget(tags: model.tags,),
          const SizedBox(
             height: 5,
           ),
-          RatingWidget(),
+          RatingWidget(rating: model.rating),
         ],
       ),
     );

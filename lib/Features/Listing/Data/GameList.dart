@@ -223,7 +223,7 @@ class Result{
       backgroundImage: backgroundImage ?? "",
       rating: rating ?? 0,
       reviewsCount: reviewsCount ?? 0,
-      id: id ?? 0);
+      id: id ?? 0, tags: tags ?? []);
 }
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(

@@ -1,18 +1,20 @@
+import 'package:expense_manager/Features/Listing/Data/GameList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TagsWidget extends StatelessWidget {
-  const TagsWidget({Key? key}) : super(key: key);
+  TagsWidget({Key? key, required this.tags}) : super(key: key);
+  List<Genre> tags;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
         height: 20,
-        margin: const EdgeInsets.only(left: 8, right: 8 ),
+        margin: const EdgeInsets.only(left: 8, right: 8),
         child: ListView.builder(
           itemBuilder: getItemFor,
-          itemCount: 10,
+          itemCount: tags.length,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
         ),
@@ -21,12 +23,15 @@ class TagsWidget extends StatelessWidget {
   }
 
   Tag getItemFor(context, index) {
-    return const Tag();
+    return Tag(
+      tag: tags[index].name ?? '',
+    );
   }
 }
 
 class Tag extends StatelessWidget {
-  const Tag({Key? key}) : super(key: key);
+  Tag({Key? key, required this.tag}) : super(key: key);
+  String tag;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +41,9 @@ class Tag extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5), color: Colors.white30),
       alignment: Alignment.center,
-      child: const Text(
-        'Race ABC',
-        style: TextStyle(
+      child: Text(
+        tag,
+        style: const TextStyle(
           color: Colors.black,
           fontSize: 10,
         ),
