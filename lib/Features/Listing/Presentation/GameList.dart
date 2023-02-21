@@ -22,13 +22,13 @@ class _GameListState extends State<GameList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 50),
+      margin: const EdgeInsets.only(top: 50),
       child: ListView.builder(
-        padding: EdgeInsets.only(top: 10),
-          itemCount: 10,
+        padding: const EdgeInsets.only(top: 10),
+          itemCount: widget.games.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            return const Game();
+            return  Game(model: widget.games[index],);
           }),
     );
   }

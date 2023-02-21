@@ -14,25 +14,25 @@ void main() async {
   runApp(const ExpenseManager());
 }
 
-// class ExpenseManager extends StatelessWidget {
-//   const ExpenseManager({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider<LoginCubit>(
-//         create: (context) => LoginCubit(),
-//         child: const MaterialApp(
-//           onGenerateRoute: generateRoutes,
-//           home: Login(),
-//         ));
-//   }
-// }
-
 class ExpenseManager extends StatelessWidget {
   const ExpenseManager({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: ListGames());
+    return BlocProvider<LoginCubit>(
+        create: (context) => LoginCubit(),
+        child: const MaterialApp(
+          onGenerateRoute: generateRoutes,
+          home: Login(),
+        ));
   }
 }
+
+// class ExpenseManager extends StatelessWidget {
+//   const ExpenseManager({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(home: ListGames());
+//   }
+// }

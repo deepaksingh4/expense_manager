@@ -22,3 +22,12 @@ class GamesLoaded extends ListingStates{
   @override
   List<Object?> get props => [games];
 }
+
+class LoadingGamesFailed extends ListingStates{
+  final String errorMessage;
+
+  LoadingGamesFailed({required this.errorMessage});
+
+  @override
+  List<Object?> get props => [];
+}

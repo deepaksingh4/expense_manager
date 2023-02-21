@@ -1,5 +1,6 @@
 import 'package:expense_manager/Core/app_colors.dart';
 import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
+import 'package:expense_manager/Features/Listing/Presentation/ListGames.dart';
 import 'package:expense_manager/Features/Profile/profile_view.dart';
 import 'package:expense_manager/Features/Search/search.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Dashboard/Presentation/blocs/dashboard_cubit.dart';
+import 'Listing/Presentation/Cubit/ListingCubit.dart';
 
 class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  List pages = [Dashboard(), SearchView(), ProfileView()];
+  List pages = [ListGames(),Dashboard(), SearchView(), ProfileView()];
   int currentPage = 0;
 
   void onTap(int index) {
@@ -24,12 +26,18 @@ class _MainViewState extends State<MainView> {
       currentPage = index;
     });
   }
-
+  // BlocProvider(
+  // create: (context) => ListingCubit()
+  // ..setupCubit(),
+  // child:
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => DashboardCubit()..loadContent(),
-        child: Scaffold(
+    return MultiBlocProvider(providers: [
+        BlocProvider(
+        create: (context) => DashboardCubit()..loadContent()),
+      BlocProvider(
+          create: (context) => ListingCubit()..setupCubit()),
+    ], child: Scaffold(
           body: pages[currentPage],
           bottomNavigationBar: BottomNavigationBar(
             onTap: onTap,
@@ -40,6 +48,8 @@ class _MainViewState extends State<MainView> {
             currentIndex: currentPage,
             elevation: 0,
             items: const [
+              BottomNavigationBarItem(
+                  label: 'Games', icon: Icon(Icons.apps)),
               BottomNavigationBarItem(
                   label: 'Dashboard', icon: Icon(Icons.apps)),
               BottomNavigationBarItem(

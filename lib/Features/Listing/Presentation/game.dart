@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
 import 'package:expense_manager/Features/Listing/Presentation/rating_widget.dart';
 import 'package:expense_manager/Features/Listing/Presentation/tags_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
-  const Game({Key? key}) : super(key: key);
+  const Game({Key? key, required this.model}) : super(key: key);
+  final GameUIModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +25,19 @@ class Game extends StatelessWidget {
               blurRadius: 3,
               spreadRadius: 3)
         ],
-        image: const DecorationImage(
-            image: AssetImage('images/tmp.jpg'), fit: BoxFit.cover),
+        image:  DecorationImage(
+            image: CachedNetworkImageProvider(model.backgroundImage), fit: BoxFit.cover),
       ),
-      child: const GameContent(),
+      child: GameContent(
+        model: model,
+      ),
     );
   }
 }
 
 class GameContent extends StatelessWidget {
-  const GameContent({Key? key}) : super(key: key);
+  const GameContent({Key? key, required this.model}) : super(key: key);
+  final GameUIModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +51,18 @@ class GameContent extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children:  [
           Text(
-            'Thi sis a demo tezt donw onlu andjasjidbfi dsbifbi sdbiudbuidsbfi sbhfdsiufguidshguidsh ids g idgfudhfgiudsfih sdiufhis hdiuf gsdfugdsfuygdyug gf uysdguygsdfguydsgfyu gsduyfg uysdgfuysgfuygsdufgsduyfg uysdgfudgsyf gsudgfuysdgfdsgf',
+            model.name,
             textAlign: TextAlign.center,
             maxLines: 2,
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
-          SizedBox(
+         const SizedBox(
             height: 10,
           ),
           TagsWidget(),
-          SizedBox(
+         const SizedBox(
             height: 5,
           ),
           RatingWidget(),

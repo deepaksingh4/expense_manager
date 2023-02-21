@@ -1,5 +1,5 @@
-import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
+import '../Data/GameList.dart';
 
 abstract class GameListingRepository {
-  Future<List<GameUIModel>> getGames();
+  Future<GameList> getGames();
 }

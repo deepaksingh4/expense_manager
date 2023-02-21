@@ -45,7 +45,7 @@ class GameList {
     count: json["count"],
     next: json["next"],
     previous: json["previous"],
-    results: json["results"] == null ? [] : List<Result>.from(json["results"]!.map((x) => Result.fromJson(x))),
+    results: json["results"] == null ? [] : List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
     seoTitle: json["seo_title"],
     seoDescription: json["seo_description"],
     seoKeywords: json["seo_keywords"],
@@ -54,7 +54,7 @@ class GameList {
     nofollow: json["nofollow"],
     description: json["description"],
     filters: json["filters"] == null ? null : Filters.fromJson(json["filters"]),
-    nofollowCollections: json["nofollow_collections"] == null ? [] : List<String>.from(json["nofollow_collections"]!.map((x) => x)),
+    nofollowCollections: json["nofollow_collections"] == null ? [] : List<String>.from(json["nofollow_collections"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
@@ -154,15 +154,17 @@ class YearYear {
   };
 }
 
-class Result extends GameUIModel{
+class Result{
+
+
   Result({
-    id,
+    this.id,
     this.slug,
-    name,
+    this.name,
     this.released,
     this.tba,
-    backgroundImage,
-    rating,
+    this.backgroundImage,
+    this.rating,
     this.ratingTop,
     this.ratings,
     this.ratingsCount,
@@ -174,7 +176,7 @@ class Result extends GameUIModel{
     this.suggestionsCount,
     this.updated,
     this.userGame,
-    reviewsCount,
+    this.reviewsCount,
     this.saturatedColor,
     this.dominantColor,
     this.platforms,
@@ -185,8 +187,12 @@ class Result extends GameUIModel{
     this.tags,
     this.esrbRating,
     this.shortScreenshots,
-  }):super(id: id, rating: rating, reviewsCount: reviewsCount, name: name, backgroundImage: backgroundImage);
-
+  });
+  int? id;
+  String? name;
+  String? backgroundImage;
+  double? rating;
+  int? reviewsCount;
   String? slug;
   DateTime? released;
   bool? tba;
@@ -212,6 +218,14 @@ class Result extends GameUIModel{
   EsrbRating? esrbRating;
   List<ShortScreenshot>? shortScreenshots;
 
+ GameUIModel getUIModel() {
+ return GameUIModel(name: name ?? "",
+      backgroundImage: backgroundImage ?? "",
+      rating: rating ?? 0,
+      reviewsCount: reviewsCount ?? 0,
+      id: id ?? 0);
+}
+
   factory Result.fromJson(Map<String, dynamic> json) => Result(
     id: json["id"],
     slug: json["slug"],
@@ -221,7 +235,7 @@ class Result extends GameUIModel{
     backgroundImage: json["background_image"],
     rating: json["rating"]?.toDouble(),
     ratingTop: json["rating_top"],
-    ratings: json["ratings"] == null ? [] : List<Rating>.from(json["ratings"]!.map((x) => Rating.fromJson(x))),
+    ratings: json["ratings"] == null ? [] : List<Rating>.from(json["ratings"].map((x) => Rating.fromJson(x))),
     ratingsCount: json["ratings_count"],
     reviewsTextCount: json["reviews_text_count"],
     added: json["added"],
@@ -234,14 +248,14 @@ class Result extends GameUIModel{
     reviewsCount: json["reviews_count"],
     saturatedColor: json["saturated_color"],
     dominantColor: json["dominant_color"],
-    platforms: json["platforms"] == null ? [] : List<PlatformElement>.from(json["platforms"]!.map((x) => PlatformElement.fromJson(x))),
-    parentPlatforms: json["parent_platforms"] == null ? [] : List<ParentPlatform>.from(json["parent_platforms"]!.map((x) => ParentPlatform.fromJson(x))),
-    genres: json["genres"] == null ? [] : List<Genre>.from(json["genres"]!.map((x) => Genre.fromJson(x))),
-    stores: json["stores"] == null ? [] : List<Store>.from(json["stores"]!.map((x) => Store.fromJson(x))),
+    platforms: json["platforms"] == null ? [] : List<PlatformElement>.from(json["platforms"].map((x) => PlatformElement.fromJson(x))),
+    parentPlatforms: json["parent_platforms"] == null ? [] : List<ParentPlatform>.from(json["parent_platforms"].map((x) => ParentPlatform.fromJson(x))),
+    genres: json["genres"] == null ? [] : List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+    stores: json["stores"] == null ? [] : List<Store>.from(json["stores"].map((x) => Store.fromJson(x))),
     clip: json["clip"],
     tags: json["tags"] == null ? [] : List<Genre>.from(json["tags"]!.map((x) => Genre.fromJson(x))),
     esrbRating: json["esrb_rating"] == null ? null : EsrbRating.fromJson(json["esrb_rating"]),
-    shortScreenshots: json["short_screenshots"] == null ? [] : List<ShortScreenshot>.from(json["short_screenshots"]!.map((x) => ShortScreenshot.fromJson(x))),
+    shortScreenshots: json["short_screenshots"] == null ? [] : List<ShortScreenshot>.from(json["short_screenshots"].map((x) => ShortScreenshot.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -363,7 +377,7 @@ class Genre {
     gamesCount: json["games_count"],
     imageBackground: json["image_background"],
     domain: json["domain"],
-    language: languageValues.map[json["language"]]!,
+    language: languageValues.map[json["language"]],
   );
 
   Map<String, dynamic> toJson() => {
