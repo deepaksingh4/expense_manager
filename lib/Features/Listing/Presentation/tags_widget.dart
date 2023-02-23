@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TagsWidget extends StatelessWidget {
-  TagsWidget({Key? key, required this.tags}) : super(key: key);
-  List<Genre> tags;
+  const TagsWidget({Key? key, required this.tags}) : super(key: key);
+  final List<Genre> tags;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class TagsWidget extends StatelessWidget {
 }
 
 class Tag extends StatelessWidget {
-  Tag({Key? key, required this.tag}) : super(key: key);
-  String tag;
+  const Tag({Key? key, required this.tag}) : super(key: key);
+  final String tag;
 
   @override
   Widget build(BuildContext context) {

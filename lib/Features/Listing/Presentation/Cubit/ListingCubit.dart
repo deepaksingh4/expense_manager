@@ -19,15 +19,14 @@ class ListingCubit extends Cubit<ListingStates> {
   }
 
   Future<void> loadGames() async {
-    // var games =  [ const GameUIModel("name", "backgroundImageURL", 4.0, 121, 111)];
     try {
       GameList data = await useCase.getGames();
-      GamesLoaded gamesLoaded = GamesLoaded(
-          games: data.results?.map((e) => e.getUIModel()).toList() ?? []);
+      GamesLoaded gamesLoaded = GamesLoaded(games: data.getUIModel());
       emit(gamesLoaded);
     } on IssueGettingGames {
-      emit(LoadingGamesFailed(errorMessage: "Issue while getting data from API"));
-    } catch (e){
+      emit(LoadingGamesFailed(
+          errorMessage: "Issue while getting data from API"));
+    } catch (e) {
       print(e.toString());
     }
   }

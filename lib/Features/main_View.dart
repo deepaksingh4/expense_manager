@@ -1,5 +1,6 @@
 import 'package:expense_manager/Core/app_colors.dart';
 import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
+import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_cubit.dart';
 import 'package:expense_manager/Features/Listing/Presentation/ListGames.dart';
 import 'package:expense_manager/Features/Profile/profile_view.dart';
 import 'package:expense_manager/Features/Search/search.dart';
@@ -37,6 +38,8 @@ class _MainViewState extends State<MainView> {
         create: (context) => DashboardCubit()..loadContent()),
       BlocProvider(
           create: (context) => ListingCubit()..setupCubit()),
+      BlocProvider(
+          create: (context) => SearchCubit()),
     ], child: Scaffold(
           body: pages[currentPage],
           bottomNavigationBar: BottomNavigationBar(
