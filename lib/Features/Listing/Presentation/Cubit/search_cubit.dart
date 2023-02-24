@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:expense_manager/Features/Listing/Data/GameList.dart';
-import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
-import 'package:expense_manager/Features/Listing/Domain/search_repository.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_states.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Features/Listing/Domain/GameUIModel.dart';
+import 'package:Game_Finder/Features/Listing/Domain/search_repository.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_states.dart';
 
 import '../../Data/search_repository_impl.dart';
 

@@ -1,4 +1,4 @@
-import 'package:expense_manager/Core/dio_client.dart';
+import 'package:Game_Finder/Core/dio_client.dart';
 
 import '../../../Core/AppExceptions.dart';
 import '../../../Core/api_constants.dart';

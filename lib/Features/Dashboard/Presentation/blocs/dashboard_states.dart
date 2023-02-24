@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/image_model.dart';
 
 abstract class DashboardState extends Equatable{}
 

@@ -1,6 +1,6 @@
-import 'package:expense_manager/Core/api_constants.dart';
-import 'package:expense_manager/Core/dio_client.dart';
-import 'package:expense_manager/Features/Dashboard/Data/ImageDataModel.dart';
+import 'package:Game_Finder/Core/api_constants.dart';
+import 'package:Game_Finder/Core/dio_client.dart';
+import 'package:Game_Finder/Features/Dashboard/Data/ImageDataModel.dart';
 
 class ImageDataSource {
   Future<List<ImageDataModel>> getImages() async {

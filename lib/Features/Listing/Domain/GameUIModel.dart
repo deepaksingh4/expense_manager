@@ -1,4 +1,4 @@
-import 'package:expense_manager/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
 
 class GameUIModel {
   final int id;

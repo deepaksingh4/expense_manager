@@ -1,10 +1,10 @@
 import 'dart:ffi';
 
 import 'package:bloc/bloc.dart';
-import 'package:expense_manager/Core/AppExceptions.dart';
-import 'package:expense_manager/Features/Listing/Data/GameList.dart';
-import 'package:expense_manager/Features/Listing/Data/GameListingRepositoryImpl.dart';
-import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameListingRepositoryImpl.dart';
+import 'package:Game_Finder/Features/Listing/Domain/GameUIModel.dart';
 import '../../Domain/ListGamesUseCase.dart';
 import 'ListingStates.dart';
 

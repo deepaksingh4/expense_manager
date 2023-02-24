@@ -1,6 +1,6 @@
-import 'package:expense_manager/Core/app_colors.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_cubit.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_states.dart';
+import 'package:Game_Finder/Core/app_colors.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_cubit.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

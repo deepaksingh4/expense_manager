@@ -1,4 +1,4 @@
-import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/image_model.dart';
 
 /// albumId : 1
 /// id : 1

@@ -1,9 +1,9 @@
-import 'package:expense_manager/Core/app_colors.dart';
-import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_cubit.dart';
-import 'package:expense_manager/Features/Listing/Presentation/ListGames.dart';
-import 'package:expense_manager/Features/Profile/profile_view.dart';
-import 'package:expense_manager/Features/Search/search.dart';
+import 'package:Game_Finder/Core/app_colors.dart';
+import 'package:Game_Finder/Features/Dashboard/Presentation/Views/dashboard.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_cubit.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/ListGames.dart';
+import 'package:Game_Finder/Features/Profile/profile_view.dart';
+import 'package:Game_Finder/Features/Search/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

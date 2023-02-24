@@ -1,8 +1,8 @@
-import 'package:expense_manager/Core/dio_client.dart';
-import 'package:expense_manager/Features/Dashboard/Data/ImageDataModel.dart';
-import 'package:expense_manager/Features/Dashboard/Data/ImageDataSource.dart';
-import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
-import 'package:expense_manager/Features/Dashboard/Domain/images_repository.dart';
+import 'package:Game_Finder/Core/dio_client.dart';
+import 'package:Game_Finder/Features/Dashboard/Data/ImageDataModel.dart';
+import 'package:Game_Finder/Features/Dashboard/Data/ImageDataSource.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/image_model.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/images_repository.dart';
 
 class ImageRepositoryImp extends ImagesRepository {
   @override

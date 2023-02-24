@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
+import 'package:Game_Finder/Features/Listing/Domain/GameUIModel.dart';
 
 GameList gameListFromJson(String str) => GameList.fromJson(json.decode(str));
 

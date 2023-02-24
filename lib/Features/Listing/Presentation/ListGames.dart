@@ -1,9 +1,9 @@
-import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/ListingCubit.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/ListingStates.dart';
-import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_states.dart';
-import 'package:expense_manager/Features/Listing/Presentation/GameList.dart';
-import 'package:expense_manager/Features/Listing/Presentation/SearchBar.dart';
+import 'package:Game_Finder/Features/Listing/Domain/GameUIModel.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/ListingCubit.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/ListingStates.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_states.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/GameList.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/SearchBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter/material.dart';

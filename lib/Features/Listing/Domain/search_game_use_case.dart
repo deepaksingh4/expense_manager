@@ -1,5 +1,5 @@
-import 'package:expense_manager/Features/Listing/Domain/GameUIModel.dart';
-import 'package:expense_manager/Features/Listing/Domain/search_repository.dart';
+import 'package:Game_Finder/Features/Listing/Domain/GameUIModel.dart';
+import 'package:Game_Finder/Features/Listing/Domain/search_repository.dart';
 
 import '../Data/GameList.dart';
 import '../Data/search_repository_impl.dart';

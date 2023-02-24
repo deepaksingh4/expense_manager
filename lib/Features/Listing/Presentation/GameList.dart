@@ -1,4 +1,4 @@
-import 'package:expense_manager/Features/Listing/Presentation/game.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/game.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Domain/GameUIModel.dart';

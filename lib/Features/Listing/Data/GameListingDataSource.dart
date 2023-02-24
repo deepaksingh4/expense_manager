@@ -1,5 +1,5 @@
-import 'package:expense_manager/Core/AppExceptions.dart';
-import 'package:expense_manager/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
 
 import '../../../Core/api_constants.dart';
 import '../../../Core/dio_client.dart';

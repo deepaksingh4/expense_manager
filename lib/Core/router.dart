@@ -1,6 +1,6 @@
-import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
-import 'package:expense_manager/Features/Login/Presentation/login.dart';
-import 'package:expense_manager/Features/main_View.dart';
+import 'package:Game_Finder/Features/Dashboard/Presentation/Views/dashboard.dart';
+import 'package:Game_Finder/Features/Login/Presentation/login.dart';
+import 'package:Game_Finder/Features/main_View.dart';
 import 'package:flutter/cupertino.dart';
 
 class Navigation {
