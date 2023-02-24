@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class TagsWidget extends StatelessWidget {
   const TagsWidget({Key? key, required this.tags}) : super(key: key);
-  final List<Genre> tags;
+  final List<String> tags;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class TagsWidget extends StatelessWidget {
 
   Tag getItemFor(context, index) {
     return Tag(
-      tag: tags[index].name ?? '',
+      tag: tags[index] ?? '',
     );
   }
 }

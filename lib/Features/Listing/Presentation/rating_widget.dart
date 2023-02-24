@@ -39,7 +39,7 @@ class RatingWidget extends StatelessWidget {
     }
 
     ratings.add( const SizedBox(width: 5,));
-    ratings.add(const Text('(12)', style: TextStyle(
+    ratings.add( Text('$rating', style: const TextStyle(
     color: Colors.white,
     fontSize: 12,
     fontWeight: FontWeight.normal

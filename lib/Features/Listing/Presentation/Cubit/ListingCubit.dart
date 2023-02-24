@@ -10,7 +10,7 @@ import 'ListingStates.dart';
 
 class ListingCubit extends Cubit<ListingStates> {
   late ListGamesUseCase useCase;
-
+  late GameList games;
   ListingCubit() : super(InitialListingState());
 
   setupCubit() {
@@ -20,8 +20,8 @@ class ListingCubit extends Cubit<ListingStates> {
 
   Future<void> loadGames() async {
     try {
-      GameList data = await useCase.getGames();
-      GamesLoaded gamesLoaded = GamesLoaded(games: data.getUIModel());
+      games = await useCase.getGames();
+      GamesLoaded gamesLoaded = GamesLoaded(games: games.getUIModel());
       emit(gamesLoaded);
     } on IssueGettingGames {
       emit(LoadingGamesFailed(

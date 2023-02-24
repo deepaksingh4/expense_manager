@@ -6,7 +6,7 @@ class GameUIModel {
   final String backgroundImage;
   final double rating;
   final int reviewsCount;
-  final List<Genre> tags;
+  final List<String> tags;
 
   const GameUIModel(
   {required this.name, required this.backgroundImage, required this.rating, required this.reviewsCount, required this.id, required this.tags});

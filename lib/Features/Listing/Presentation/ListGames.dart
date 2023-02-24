@@ -5,6 +5,7 @@ import 'package:expense_manager/Features/Listing/Presentation/Cubit/search_state
 import 'package:expense_manager/Features/Listing/Presentation/GameList.dart';
 import 'package:expense_manager/Features/Listing/Presentation/SearchBar.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,9 @@ class _ListGamesState extends State<ListGames> {
   @override
   void initState() {
     // TODO: implement initState
+    EasyLoading.show(status: 'loading...', dismissOnTap: false);
     context.read<ListingCubit>().loadGames();
+
     super.initState();
   }
 
@@ -38,7 +41,9 @@ class _ListGamesState extends State<ListGames> {
 
             return BlocBuilder<ListingCubit, ListingStates>(
               builder: (context, state) {
+
                 if (state is GamesLoaded) {
+                  EasyLoading.dismiss(animation: true);
                   if (games.isEmpty) {
                     games = state.games;
                   }

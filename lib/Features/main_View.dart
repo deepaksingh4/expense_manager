@@ -52,7 +52,7 @@ class _MainViewState extends State<MainView> {
             elevation: 0,
             items: const [
               BottomNavigationBarItem(
-                  label: 'Games', icon: Icon(Icons.apps)),
+                  label: 'Games', icon: Icon(Icons.games)),
               BottomNavigationBarItem(
                   label: 'Dashboard', icon: Icon(Icons.apps)),
               BottomNavigationBarItem(

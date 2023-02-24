@@ -90,7 +90,7 @@ class GameList {
                 rating: e.rating ?? 0,
                 reviewsCount: e.reviewsCount ?? 0,
                 id: e.id ?? 0,
-                tags: e.tags ?? []))
+                tags: e.tags?.map((tag) => tag.name ?? "").toList() ?? []))
             .toList() ??
         [];
   }

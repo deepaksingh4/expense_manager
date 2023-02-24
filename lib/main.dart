@@ -5,7 +5,7 @@ import 'package:expense_manager/Features/Welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_config/flutter_config.dart';
-
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'Features/Login/Presentation/login_cubit.dart';
 
 void main() async {
@@ -21,9 +21,10 @@ class ExpenseManager extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LoginCubit>(
         create: (context) => LoginCubit(),
-        child: const MaterialApp(
+        child: MaterialApp(
           onGenerateRoute: generateRoutes,
-          home: Login(),
+          home: const Login(),
+          builder: EasyLoading.init(),
         ));
   }
 }
