@@ -1,4 +1,4 @@
-name: expense_manager
+name: Game_Finder
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -43,7 +43,8 @@ dependencies:
   flutter_config: ^2.0.0
   shared_preferences: ^2.0.17
   cached_network_image: ^3.2.3
-
+  flutter_easyloading: ^3.0.0
+  flutter_native_splash: ^2.2.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -55,7 +56,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-
+flutter_native_splash:
+  color: "#ffffff"
+  image: images/tmp.jpg
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -66,7 +69,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/

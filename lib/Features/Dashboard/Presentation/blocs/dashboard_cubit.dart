@@ -1,9 +1,9 @@
 
 import 'package:bloc/bloc.dart';
-import 'package:expense_manager/Features/Dashboard/Domain/get_image_usecase.dart';
-import 'package:expense_manager/Features/Dashboard/Domain/image_model.dart';
-import 'package:expense_manager/Features/Dashboard/Domain/images_repository.dart';
-import 'package:expense_manager/Features/Dashboard/Presentation/blocs/dashboard_states.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/get_image_usecase.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/image_model.dart';
+import 'package:Game_Finder/Features/Dashboard/Domain/images_repository.dart';
+import 'package:Game_Finder/Features/Dashboard/Presentation/blocs/dashboard_states.dart';
 
 // class DashboardViewModel{
 //   List<Expense> expenses = [

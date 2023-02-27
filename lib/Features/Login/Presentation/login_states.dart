@@ -1,6 +1,6 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:expense_manager/Features/Login/Domain/entities/user_Entity.dart';
+import 'package:Game_Finder/Features/Login/Domain/entities/user_Entity.dart';
 
 abstract class LoginSates extends Equatable{}
 

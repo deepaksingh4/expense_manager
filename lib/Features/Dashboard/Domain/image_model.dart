@@ -1,4 +1,4 @@
-import 'package:expense_manager/Features/Dashboard/Data/ImageDataModel.dart';
+import 'package:Game_Finder/Features/Dashboard/Data/ImageDataModel.dart';
 
 class ImageModel {
   final String thumbnail;

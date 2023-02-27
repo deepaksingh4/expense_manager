@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:expense_manager/Core/cubits/appCubitStates.dart';
+import 'package:Game_Finder/Core/cubits/appCubitStates.dart';
 
 import '../../Domain/GameUIModel.dart';
 

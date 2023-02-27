@@ -1,6 +1,6 @@
 
-import 'package:expense_manager/Features/Listing/Data/GameList.dart';
-import 'package:expense_manager/Features/Listing/Data/GameListingDataSource.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameListingDataSource.dart';
 import '../Domain/GameListingRepository.dart';
 
 class GameListingRepositoryImpl implements GameListingRepository{

@@ -1,8 +1,8 @@
-import 'package:expense_manager/Core/AppExceptions.dart';
-import 'package:expense_manager/Core/app_colors.dart';
-import 'package:expense_manager/Core/router.dart';
-import 'package:expense_manager/Features/Login/Presentation/login_cubit.dart';
-import 'package:expense_manager/Features/Login/Presentation/login_states.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
+import 'package:Game_Finder/Core/app_colors.dart';
+import 'package:Game_Finder/Core/router.dart';
+import 'package:Game_Finder/Features/Login/Presentation/login_cubit.dart';
+import 'package:Game_Finder/Features/Login/Presentation/login_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

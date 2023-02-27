@@ -1,8 +1,9 @@
-import 'package:expense_manager/Core/app_colors.dart';
-import 'package:expense_manager/Features/Dashboard/Presentation/Views/dashboard.dart';
-import 'package:expense_manager/Features/Listing/Presentation/ListGames.dart';
-import 'package:expense_manager/Features/Profile/profile_view.dart';
-import 'package:expense_manager/Features/Search/search.dart';
+import 'package:Game_Finder/Core/app_colors.dart';
+import 'package:Game_Finder/Features/Dashboard/Presentation/Views/dashboard.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_cubit.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/ListGames.dart';
+import 'package:Game_Finder/Features/Profile/profile_view.dart';
+import 'package:Game_Finder/Features/Search/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  List pages = [ListGames(),Dashboard(), SearchView(), ProfileView()];
+  List pages = [Dashboard(), ListGames(), ProfileView()];
   int currentPage = 0;
 
   void onTap(int index) {
@@ -37,6 +38,8 @@ class _MainViewState extends State<MainView> {
         create: (context) => DashboardCubit()..loadContent()),
       BlocProvider(
           create: (context) => ListingCubit()..setupCubit()),
+      BlocProvider(
+          create: (context) => SearchCubit()),
     ], child: Scaffold(
           body: pages[currentPage],
           bottomNavigationBar: BottomNavigationBar(
@@ -48,8 +51,6 @@ class _MainViewState extends State<MainView> {
             currentIndex: currentPage,
             elevation: 0,
             items: const [
-              BottomNavigationBarItem(
-                  label: 'Games', icon: Icon(Icons.apps)),
               BottomNavigationBarItem(
                   label: 'Dashboard', icon: Icon(Icons.apps)),
               BottomNavigationBarItem(

@@ -1,7 +1,7 @@
-import 'package:expense_manager/Core/AppExceptions.dart';
-import 'package:expense_manager/Core/AppExceptions.dart';
-import 'package:expense_manager/Features/Login/Data/user_data_model.dart';
-import 'package:expense_manager/Features/Login/Data/user_local_service.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
+import 'package:Game_Finder/Features/Login/Data/user_data_model.dart';
+import 'package:Game_Finder/Features/Login/Data/user_local_service.dart';
 import '../Domain/login_repository.dart';
 
 class LoginRepositoryIMPL extends LoginRepository{

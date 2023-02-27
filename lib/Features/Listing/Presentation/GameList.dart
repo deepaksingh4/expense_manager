@@ -1,4 +1,4 @@
-import 'package:expense_manager/Features/Listing/Presentation/game.dart';
+import 'package:Game_Finder/Features/Listing/Presentation/game.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Domain/GameUIModel.dart';
@@ -12,6 +12,7 @@ class GameList extends StatefulWidget {
 }
 
 class _GameListState extends State<GameList> {
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -22,13 +23,23 @@ class _GameListState extends State<GameList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 50),
+      margin: const EdgeInsets.only(top: 70),
       child: ListView.builder(
-        padding: const EdgeInsets.only(top: 10),
+          controller: _scrollController
+            ..addListener(() {
+              if (_scrollController.offset ==
+                  _scrollController.position.maxScrollExtent) {
+//reload with new page number
+              //who holds the list of games with page count and next details
+              }
+            }),
+          padding: const EdgeInsets.only(top: 10),
           itemCount: widget.games.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            return  Game(model: widget.games[index],);
+            return Game(
+              model: widget.games[index],
+            );
           }),
     );
   }

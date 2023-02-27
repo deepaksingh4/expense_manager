@@ -1,18 +1,21 @@
-import 'package:Game_Finder/Core/AppExceptions.dart';
-import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Core/dio_client.dart';
 
+import '../../../Core/AppExceptions.dart';
 import '../../../Core/api_constants.dart';
-import '../../../Core/dio_client.dart';
+import '../Data/GameList.dart';
 
-class GameListingDataSource {
-  Future<GameList> getGames() async{
+class SearchGameDataSource {
+  DioClient dioClient = DioClient();
+
+  Future<GameList> searchGame(String searchText) async {
     GameList list = GameList();
-   await DioClient().performGet(
+    await dioClient.performGet(
         path: Endpoints.gameList.url(),
         queryParams: {
           'key': 'b762ec803b8949879db2a471c9fcbcc5',
           'page_size': '15',
-          'page': '1'
+          'page': '1',
+          'search': searchText
         },
         success: (data) {
           var jsonData = data.body;
@@ -22,6 +25,6 @@ class GameListingDataSource {
           throw IssueGettingGames(errorCode: 400);
         }
     );
-   return list;
+    return list;
   }
 }

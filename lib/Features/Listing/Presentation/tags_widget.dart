@@ -1,10 +1,10 @@
-import 'package:expense_manager/Features/Listing/Data/GameList.dart';
+import 'package:Game_Finder/Features/Listing/Data/GameList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TagsWidget extends StatelessWidget {
-  TagsWidget({Key? key, required this.tags}) : super(key: key);
-  List<Genre> tags;
+  const TagsWidget({Key? key, required this.tags}) : super(key: key);
+  final List<String> tags;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +24,14 @@ class TagsWidget extends StatelessWidget {
 
   Tag getItemFor(context, index) {
     return Tag(
-      tag: tags[index].name ?? '',
+      tag: tags[index] ?? '',
     );
   }
 }
 
 class Tag extends StatelessWidget {
-  Tag({Key? key, required this.tag}) : super(key: key);
-  String tag;
+  const Tag({Key? key, required this.tag}) : super(key: key);
+  final String tag;
 
   @override
   Widget build(BuildContext context) {

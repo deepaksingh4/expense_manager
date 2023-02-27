@@ -1,4 +1,4 @@
-import 'package:expense_manager/Core/AppExceptions.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
 import 'user_data_model.dart';
 
 abstract class UserService {

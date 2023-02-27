@@ -1,8 +1,8 @@
-import 'package:expense_manager/Core/app_colors.dart';
-import 'package:expense_manager/Core/responsive_button.dart';
-import 'package:expense_manager/Core/router.dart';
-import 'package:expense_manager/Features/Welcome/app_large_text.dart';
-import 'package:expense_manager/Features/Welcome/app_text.dart';
+import 'package:Game_Finder/Core/app_colors.dart';
+import 'package:Game_Finder/Core/responsive_button.dart';
+import 'package:Game_Finder/Core/router.dart';
+import 'package:Game_Finder/Features/Welcome/app_large_text.dart';
+import 'package:Game_Finder/Features/Welcome/app_text.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:expense_manager/Core/AppExceptions.dart';
-import 'package:expense_manager/Features/Login/Data/user_data_model.dart';
-import 'package:expense_manager/Features/Login/Domain/login_repository.dart';
+import 'package:Game_Finder/Core/AppExceptions.dart';
+import 'package:Game_Finder/Features/Login/Data/user_data_model.dart';
+import 'package:Game_Finder/Features/Login/Domain/login_repository.dart';
 
 import 'entities/user_Entity.dart';
 
