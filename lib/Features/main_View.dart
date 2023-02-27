@@ -19,7 +19,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  List pages = [ListGames(),Dashboard(), SearchView(), ProfileView()];
+  List pages = [Dashboard(), ListGames(), ProfileView()];
   int currentPage = 0;
 
   void onTap(int index) {
@@ -51,8 +51,6 @@ class _MainViewState extends State<MainView> {
             currentIndex: currentPage,
             elevation: 0,
             items: const [
-              BottomNavigationBarItem(
-                  label: 'Games', icon: Icon(Icons.games)),
               BottomNavigationBarItem(
                   label: 'Dashboard', icon: Icon(Icons.apps)),
               BottomNavigationBarItem(

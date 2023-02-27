@@ -29,11 +29,3 @@ class ExpenseManager extends StatelessWidget {
   }
 }
 
-// class ExpenseManager extends StatelessWidget {
-//   const ExpenseManager({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(home: ListGames());
-//   }
-// }
