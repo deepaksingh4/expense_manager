@@ -125,7 +125,7 @@ class ProfileWidgets {
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Enter Your Registered Email ID ",
+                        "Enter your registered email id ",
                       ),
                     ),
                     Container(

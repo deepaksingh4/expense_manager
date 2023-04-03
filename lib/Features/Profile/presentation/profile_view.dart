@@ -1,10 +1,14 @@
 import 'package:Game_Finder/Core/app_colors.dart';
 import 'package:Game_Finder/Features/Profile/data/profile_menu_model.dart';
+import 'package:Game_Finder/Features/Profile/presentation/bloc/profile_menu_cubit.dart';
 import 'package:Game_Finder/Features/Profile/presentation/profile_menu_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileView extends StatefulWidget {
+  const ProfileView({super.key});
+
   @override
   State<StatefulWidget> createState() => _ProfileView();
 }
@@ -19,6 +23,7 @@ class _ProfileView extends State<ProfileView> {
       borderRadius: BorderRadius.all(Radius.circular(18)),
     ),
   );
+
   @override
   void initState() {
     // TODO: implement initState
@@ -28,10 +33,13 @@ class _ProfileView extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: AppColors.profileBGColor,
-      child: _profile()
+        width: double.infinity,
+        height: double.infinity,
+        color: AppColors.profileBGColor,
+        child: BlocProvider<ProfileMenuCubit>(
+          create: (context) => ProfileMenuCubit(),
+          child: _profile(),
+        )
     );
   }
 
@@ -54,16 +62,16 @@ class _ProfileView extends State<ProfileView> {
                 ),
                 const SizedBox(height: 25,),
                 const Text(
-                    'Deep',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600
-                    ),
+                  'Deep',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600
+                  ),
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
                   style: raisedButtonStyle,
-                  onPressed: () { },
+                  onPressed: () {},
                   child: const Text('Favorite'),
                 ),
                 const Spacer(),

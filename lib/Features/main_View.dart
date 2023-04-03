@@ -2,8 +2,7 @@ import 'package:Game_Finder/Core/app_colors.dart';
 import 'package:Game_Finder/Features/Dashboard/Presentation/Views/dashboard.dart';
 import 'package:Game_Finder/Features/Listing/Presentation/Cubit/search_cubit.dart';
 import 'package:Game_Finder/Features/Listing/Presentation/ListGames.dart';
-import 'package:Game_Finder/Features/Profile/profile_view.dart';
-import 'package:Game_Finder/Features/Search/search.dart';
+import 'package:Game_Finder/Features/Profile/presentation/profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +18,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  List pages = [Dashboard(), ListGames(), ProfileView()];
+  List pages = [const Dashboard(), const ListGames(), const ProfileView()];
   int currentPage = 0;
 
   void onTap(int index) {
