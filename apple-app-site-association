@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": ["7PJ27D6VWU.com.pcg.ethos"],
+                "components": [
+                    {
+                        "/": "/forgotpassword", "comment": "forgot password change page"
+                    },
+                ],
+                "paths": ["/", "/forgotpassword/*"]
+            }
+        ]
+    }
+}
