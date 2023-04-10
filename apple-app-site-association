@@ -2,7 +2,7 @@
     "applinks": {
         "details": [
             {
-                "appIDs": ["7PJ27D6VWU.com.pcg.ethos"],
+                "appIDs": ["FVKMJT46KC.com.dex.WorkoutPlanner1"],
                 "components": [
                     {
                         "/": "/forgotpassword", "comment": "forgot password change page"
